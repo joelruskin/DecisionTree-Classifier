@@ -1,0 +1,28 @@
+### decision tree classifier
+import sklearn as sns
+import pandas as pd
+from sklearn import datasets
+from sklearn.datasets import load_iris
+df=pd.read_csv("iris.csv")
+df
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
+x=df[["Sepal.Length","Sepal.Width","Petal.Length","Petal.Width"]]
+x
+y=df[["Species"]]
+y
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
+x_train.shape,x_test.shape
+y_train.shape,y_test.shape
+model
+model_fit=DecisionTreeClassifier()
+model_fit=model_fit.fit(x_train,y_train)
+model_fit.feature_importances_
+pred=model_fit.predict(x_test)
+pred
+from sklearn.metrics import confusion_matrix
+result=confusion_matrix(y_test,pred)
+result
+from sklearn.metrics import accuracy_score
+accuracy_score(y_test,pred)
